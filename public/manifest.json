@@ -1,0 +1,19 @@
+{
+  "name": "AnchorID Decentralized Identity Wallet",
+  "short_name": "AnchorID",
+  "description": "Secure, offline-first decentralized digital identity wallet for refugees and stateless persons.",
+  "start_url": "/wallet",
+  "display": "standalone",
+  "background_color": "#0b1326",
+  "theme_color": "#0b1326",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/anchor/default/512px.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
