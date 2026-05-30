@@ -23,9 +23,13 @@ export default function TopNav({ variant = 'public' }: TopNavProps) {
 
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2 group" aria-label="AnchorID home">
-        <span className="material-symbols-filled text-secondary text-2xl group-hover:scale-110 transition-transform">
-          anchor
-        </span>
+        <img
+          src="/logo.png"
+          alt="AnchorID Logo"
+          width={32}
+          height={32}
+          className="h-8 w-8 object-cover rounded-md group-hover:scale-110 transition-transform duration-200"
+        />
         <span className="text-xl font-bold text-secondary tracking-tight">AnchorID</span>
       </Link>
 
