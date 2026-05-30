@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import MeshGradient from '@/components/MeshGradient'
+import Watermark from '@/components/layout/Watermark'
 import TopNav from '@/components/layout/TopNav'
 import { generateDIDKey, derivePINKey } from '@/lib/crypto'
 import { getActiveKeyPair, saveKeyPair, setSetting, getSetting } from '@/lib/indexeddb'
@@ -184,7 +186,23 @@ export default function WalletAuthPage() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-6 relative py-12">
       <MeshGradient />
+      <Watermark />
       <TopNav variant="wallet" />
+
+      {/* Back Navigation and Page Explanation */}
+      <div className="w-full max-w-md mb-6 relative z-10">
+        <Link 
+          href="/" 
+          className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-on-surface-variant hover:text-secondary mb-4 transition-colors"
+        >
+          <span className="material-symbols-outlined text-sm">arrow_back</span>
+          BACK TO HOME
+        </Link>
+        <div className="text-center space-y-1">
+          <h1 className="text-2xl font-extrabold text-on-surface">Identity Wallet</h1>
+          <p className="text-sm text-on-surface-variant">View and manage your digital credentials in one place.</p>
+        </div>
+      </div>
 
       {/* Main card box */}
       <div className="w-full max-w-md glass-card rounded-2xl p-8 border border-white/10 relative overflow-hidden flex flex-col items-center cyan-glow-effect">

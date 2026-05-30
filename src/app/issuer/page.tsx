@@ -1,8 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import MeshGradient from '@/components/MeshGradient'
 import TopNav from '@/components/layout/TopNav'
+import Watermark from '@/components/layout/Watermark'
+import Footer from '@/components/layout/Footer'
 import { translations } from '@/lib/i18n'
 import { createDemoCredential, hashCredential } from '@/lib/crypto'
 import type { AnchorCredential, CredentialType, IssuanceRequest } from '@/lib/types'
@@ -134,10 +137,22 @@ export default function IssuerDashboard() {
   return (
     <div className="min-h-screen pb-24 relative">
       <MeshGradient animated />
+      <Watermark />
       <TopNav variant="issuer" />
 
       <main className="max-w-6xl mx-auto px-6 pt-24 space-y-12">
         
+        {/* Back Navigation */}
+        <div>
+          <Link 
+            href="/" 
+            className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-on-surface-variant hover:text-secondary transition-colors relative z-10"
+          >
+            <span className="material-symbols-outlined text-sm">arrow_back</span>
+            BACK TO HOME
+          </Link>
+        </div>
+
         {/* Header Title */}
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
@@ -145,7 +160,7 @@ export default function IssuerDashboard() {
           </div>
           <div>
             <h1 className="text-2xl font-extrabold text-on-surface">{t.issuer.title}</h1>
-            <p className="text-xs text-on-surface-variant">NGO/UNHCR authorized digital credentials issuance desk.</p>
+            <p className="text-sm text-on-surface-variant mt-1">Issue secure digital credentials to eligible individuals.</p>
           </div>
         </div>
 
@@ -375,6 +390,7 @@ export default function IssuerDashboard() {
         </div>
 
       </main>
+      <Footer />
     </div>
   )
 }

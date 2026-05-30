@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import MeshGradient from '@/components/MeshGradient'
 import TopNav from '@/components/layout/TopNav'
+import Watermark from '@/components/layout/Watermark'
 import { translations } from '@/lib/i18n'
 import { generateDIDKey } from '@/lib/crypto'
 import { saveKeyPair, wipeWallet } from '@/lib/indexeddb'
@@ -60,7 +61,23 @@ export default function SocialRecoveryPage() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-6 relative py-12">
       <MeshGradient animated />
+      <Watermark />
       <TopNav variant="wallet" />
+
+      {/* Back Navigation and Page Explanation */}
+      <div className="w-full max-w-lg mb-6 relative z-10">
+        <Link 
+          href="/" 
+          className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-on-surface-variant hover:text-secondary mb-4 transition-colors"
+        >
+          <span className="material-symbols-outlined text-sm">arrow_back</span>
+          BACK TO HOME
+        </Link>
+        <div className="text-center space-y-1">
+          <h1 className="text-2xl font-extrabold text-on-surface">Guardian Identity Recovery</h1>
+          <p className="text-sm text-on-surface-variant">Reconstruct your cryptographic identity keys using guardian secret shares.</p>
+        </div>
+      </div>
 
       {/* Container */}
       <div className="w-full max-w-lg glass-card rounded-2xl p-8 border border-white/10 relative overflow-hidden flex flex-col items-center cyan-glow-effect">

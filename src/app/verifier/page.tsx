@@ -1,8 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import MeshGradient from '@/components/MeshGradient'
 import TopNav from '@/components/layout/TopNav'
+import Watermark from '@/components/layout/Watermark'
+import Footer from '@/components/layout/Footer'
 import { translations } from '@/lib/i18n'
 import { verifyQRPayload } from '@/lib/crypto'
 import type { QRPayload, VerificationResult } from '@/lib/types'
@@ -147,10 +150,22 @@ export default function VerifierPortal() {
   return (
     <div className="min-h-screen pb-24 relative">
       <MeshGradient animated />
+      <Watermark />
       <TopNav variant="verifier" />
 
       <main className="max-w-6xl mx-auto px-6 pt-24 space-y-12">
         
+        {/* Back Navigation */}
+        <div>
+          <Link 
+            href="/" 
+            className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-on-surface-variant hover:text-secondary transition-colors relative z-10"
+          >
+            <span className="material-symbols-outlined text-sm">arrow_back</span>
+            BACK TO HOME
+          </Link>
+        </div>
+
         {/* Header */}
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 bg-tertiary/10 rounded-xl flex items-center justify-center">
@@ -158,7 +173,7 @@ export default function VerifierPortal() {
           </div>
           <div>
             <h1 className="text-2xl font-extrabold text-on-surface">{t.verifier.title}</h1>
-            <p className="text-xs text-on-surface-variant">Verify cryptographic digital credentials completely offline.</p>
+            <p className="text-sm text-on-surface-variant mt-1">Verify the authenticity of a credential issued through AnchorID.</p>
           </div>
         </div>
 
@@ -326,6 +341,7 @@ export default function VerifierPortal() {
         </div>
 
       </main>
+      <Footer />
     </div>
   )
 }

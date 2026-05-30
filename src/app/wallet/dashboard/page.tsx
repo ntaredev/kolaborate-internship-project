@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import MeshGradient from '@/components/MeshGradient'
 import TopNav from '@/components/layout/TopNav'
 import BottomNav from '@/components/layout/BottomNav'
+import Watermark from '@/components/layout/Watermark'
+import Footer from '@/components/layout/Footer'
 import CredentialCard from '@/components/wallet/CredentialCard'
 import { getActiveKeyPair, getAllCredentials, saveCredential, wipeWallet, getRecoveryContacts, saveRecoveryContact, deleteRecoveryContact } from '@/lib/indexeddb'
 import type { AnchorCredential, AnchorKeyPair, RecoveryContact } from '@/lib/types'
@@ -228,11 +231,34 @@ export default function WalletDashboard() {
   return (
     <div className="min-h-screen pb-24 relative">
       <MeshGradient animated />
+      <Watermark />
       <TopNav variant="wallet" />
 
       {/* Main Container */}
       <main className="max-w-4xl mx-auto px-6 pt-24">
         
+        {/* Back Navigation */}
+        <div>
+          <Link 
+            href="/" 
+            className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-on-surface-variant hover:text-secondary mb-4 transition-colors relative z-10"
+          >
+            <span className="material-symbols-outlined text-sm">arrow_back</span>
+            BACK TO HOME
+          </Link>
+        </div>
+
+        {/* Header Title */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+            <span className="material-symbols-outlined text-secondary text-2xl">dashboard</span>
+          </div>
+          <div>
+            <h1 className="text-2xl font-extrabold text-on-surface">Identity Wallet Dashboard</h1>
+            <p className="text-sm text-on-surface-variant mt-1">Access platform tools, credentials, and verification services.</p>
+          </div>
+        </div>
+
         {/* Holder Identity Panel */}
         <section className="glass-card rounded-2xl p-6 border border-white/10 mb-8 relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-4 cyan-glow-effect">
           <div className="space-y-2">
@@ -453,6 +479,7 @@ export default function WalletDashboard() {
         )}
 
       </main>
+      <Footer />
 
       {/* ── IMPORT MODAL ── */}
       {showImportModal && (

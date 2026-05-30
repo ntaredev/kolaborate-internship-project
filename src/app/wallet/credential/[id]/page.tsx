@@ -6,6 +6,7 @@ import Link from 'next/link'
 import MeshGradient from '@/components/MeshGradient'
 import TopNav from '@/components/layout/TopNav'
 import BottomNav from '@/components/layout/BottomNav'
+import Watermark from '@/components/layout/Watermark'
 import { getCredential } from '@/lib/indexeddb'
 import { hashCredential } from '@/lib/crypto'
 import type { AnchorCredential } from '@/lib/types'
@@ -110,18 +111,28 @@ export default function CredentialDetailPage() {
   return (
     <div className="min-h-screen pb-24 relative">
       <MeshGradient animated />
+      <Watermark />
       <TopNav variant="wallet" />
 
       <main className="max-w-3xl mx-auto px-6 pt-24">
         
         {/* Back navigation */}
-        <Link 
-          href="/wallet/dashboard"
-          className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-secondary hover:text-secondary/80 transition-colors mb-6"
-        >
-          <span className="material-symbols-outlined text-sm">arrow_back</span>
-          {t.common.back.toUpperCase()}
-        </Link>
+        <div className="flex justify-between items-center mb-6 z-10 relative">
+          <Link 
+            href="/wallet/dashboard"
+            className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-secondary hover:text-secondary/80 transition-colors"
+          >
+            <span className="material-symbols-outlined text-sm">arrow_back</span>
+            {t.common.back.toUpperCase()}
+          </Link>
+          <Link 
+            href="/"
+            className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-on-surface-variant hover:text-secondary transition-colors"
+          >
+            <span className="material-symbols-outlined text-sm">home</span>
+            BACK TO HOME
+          </Link>
+        </div>
 
         {/* Detailed Credential Container */}
         <div className="glass-card rounded-2xl p-8 border border-white/10 space-y-8 relative overflow-hidden cyan-glow-effect">
