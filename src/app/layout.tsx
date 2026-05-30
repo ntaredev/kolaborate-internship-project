@@ -75,6 +75,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-background text-on-surface min-h-screen`}>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <ServiceWorkerRegister />
         {children}
       </body>

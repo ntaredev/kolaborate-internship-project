@@ -211,3 +211,120 @@ body {
 /* ── RTL support ── */
 [dir="rtl"] .mr-auto { margin-left: auto; margin-right: 0; }
 [dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+
+/* ── Skip to Content (Accessibility) ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: #5de6ff;
+  color: #0b1326;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  z-index: 9999;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ── Consistent button hover transitions ── */
+button, a {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* ── Responsive image handling ── */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Mobile responsiveness fixes ── */
+@media (max-width: 640px) {
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Tighten card padding on small screens */
+  .glass-card {
+    padding: 1rem;
+  }
+
+  /* Ensure text doesn't overflow on small phones */
+  h1, h2, h3 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Reduce hero text size on very small screens */
+  .text-4xl {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+
+  /* Ensure pre/code blocks scroll instead of overflow */
+  pre, code {
+    max-width: 100%;
+    overflow-x: auto;
+    word-break: break-all;
+  }
+}
+
+/* ── Tablet responsiveness ── */
+@media (max-width: 768px) {
+  /* Stack navigation items vertically on tablet */
+  .tablet-stack {
+    flex-direction: column;
+  }
+
+  /* Reduce mono font truncation issues on medium screens */
+  .font-mono {
+    word-break: break-all;
+  }
+}
+
+/* ── Section spacing consistency ── */
+section {
+  scroll-margin-top: 80px; /* Account for fixed header */
+}
+
+/* ── Smooth page transitions ── */
+main {
+  animation: fadeInPage 0.3s ease forwards;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Footer link hover states ── */
+footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Consistent input focus accessibility ── */
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid rgba(93, 230, 255, 0.5);
+  outline-offset: 1px;
+}
+
+/* ── Truncate with ellipsis ── */
+.truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
