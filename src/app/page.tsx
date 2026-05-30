@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import MeshGradient from '@/components/MeshGradient'
 import TopNav from '@/components/layout/TopNav'
+import Watermark from '@/components/layout/Watermark'
+import Footer from '@/components/layout/Footer'
 import { translations, type Language } from '@/lib/i18n'
 
 export default function LandingPage() {
@@ -20,6 +22,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen pb-16 relative">
       <MeshGradient animated />
+      <Watermark />
       <TopNav variant="public" />
 
       {/* Main Hero Container */}
@@ -63,6 +66,44 @@ export default function LandingPage() {
             {t.landing.heroDesc}
           </p>
         </div>
+
+        {/* About AnchorID Section */}
+        <section className="w-full max-w-5xl mt-6 mb-12 space-y-8 relative z-10 text-left">
+          <div className="glass-card rounded-2xl p-8 border border-white/10 space-y-6 relative overflow-hidden cyan-glow-effect">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center">
+                <span className="material-symbols-outlined text-secondary text-xl">info</span>
+              </div>
+              <h2 className="text-2xl font-extrabold text-on-surface tracking-tight">About AnchorID</h2>
+            </div>
+            
+            <p className="text-sm text-on-surface-variant leading-relaxed max-w-4xl">
+              AnchorID helps displaced people securely prove who they are even when physical documents are lost, damaged, or unavailable. Many refugees struggle to access education, healthcare, financial services, or humanitarian support because identity records can be difficult to verify. AnchorID provides secure digital credentials that help trusted organizations verify important information while giving individuals greater control over their identity.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+              <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-3">
+                <h3 className="text-base font-bold text-secondary flex items-center gap-2">
+                  <span className="material-symbols-outlined text-sm">warning</span>
+                  The Challenge
+                </h3>
+                <p className="text-xs text-on-surface-variant leading-relaxed">
+                  Millions of displaced people lose access to important identity documents during conflict, migration, or emergencies. Without reliable identification, accessing essential services becomes difficult.
+                </p>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-3">
+                <h3 className="text-base font-bold text-tertiary flex items-center gap-2">
+                  <span className="material-symbols-outlined text-sm">verified_user</span>
+                  Our Solution
+                </h3>
+                <p className="text-xs text-on-surface-variant leading-relaxed">
+                  AnchorID enables trusted organizations to issue secure digital credentials that can be verified quickly while helping individuals maintain ownership of their information.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Portal Entry Cards */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 max-w-5xl">
@@ -163,6 +204,64 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Trust Section */}
+        <section className="w-full max-w-5xl mt-20 space-y-8 text-center relative z-10">
+          <div className="space-y-3">
+            <h2 className="text-2xl font-extrabold text-on-surface">Why Trust AnchorID?</h2>
+            <p className="text-xs text-on-surface-variant max-w-lg mx-auto">
+              Our core principles ensure a reliable and user-focused identity infrastructure.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            {/* Card 1: Secure Identity */}
+            <div className="glass-card glass-card-hover rounded-2xl p-6 border border-white/10 text-left space-y-4">
+              <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary">
+                <span className="material-symbols-outlined text-xl">security</span>
+              </div>
+              <h3 className="text-base font-bold text-on-surface">Secure Identity</h3>
+              <p className="text-xs text-on-surface-variant leading-relaxed">
+                Protects important credential information using modern security practices.
+              </p>
+            </div>
+
+            {/* Card 2: User Control */}
+            <div className="glass-card glass-card-hover rounded-2xl p-6 border border-white/10 text-left space-y-4">
+              <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary">
+                <span className="material-symbols-outlined text-xl">fingerprint</span>
+              </div>
+              <h3 className="text-base font-bold text-on-surface">User Control</h3>
+              <p className="text-xs text-on-surface-variant leading-relaxed">
+                Individuals maintain control over their credentials.
+              </p>
+            </div>
+
+            {/* Card 3: Fast Verification */}
+            <div className="glass-card glass-card-hover rounded-2xl p-6 border border-white/10 text-left space-y-4">
+              <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary">
+                <span className="material-symbols-outlined text-xl">bolt</span>
+              </div>
+              <h3 className="text-base font-bold text-on-surface">Fast Verification</h3>
+              <p className="text-xs text-on-surface-variant leading-relaxed">
+                Organizations can verify credentials quickly and efficiently.
+              </p>
+            </div>
+
+            {/* Card 4: Accessible Anywhere */}
+            <div className="glass-card glass-card-hover rounded-2xl p-6 border border-white/10 text-left space-y-4">
+              <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary">
+                <span className="material-symbols-outlined text-xl">language</span>
+              </div>
+              <h3 className="text-base font-bold text-on-surface">Accessible Anywhere</h3>
+              <p className="text-xs text-on-surface-variant leading-relaxed">
+                Credentials remain accessible across different environments.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
         {/* Supported Organizations */}
         <section id="how-it-works" className="w-full max-w-5xl mt-20 text-center">
           <h3 className="text-lg font-bold text-data-label tracking-widest uppercase mb-10">
@@ -193,6 +292,7 @@ export default function LandingPage() {
         </section>
 
       </main>
+      <Footer />
     </div>
   )
 }
